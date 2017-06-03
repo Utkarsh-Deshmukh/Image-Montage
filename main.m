@@ -2,9 +2,9 @@ clear
 close all
 clc
 
-bg_dir = 'E:\GIT_quality_projects\montage\randomImages';
+bg_dir = 'randomImages';
 coverImg = rgb2gray(imread('minions.jpg'));
-coverImg = imresize(coverImg,5);
+coverImg = imresize(coverImg,5);        % Increasing the resolution of the coverImage
 L = dir(fullfile(bg_dir,'*.jpg'));
 [rows cols] = size(coverImg);
 
@@ -18,7 +18,7 @@ L = dir(fullfile(bg_dir,'*.jpg'));
 load averages
 
 %%
-rows = 64*floor(rows/64);
+rows = 64*floor(rows/64);               % Montage images are of size 64x64. Hence, making the dimensions of coverImage a factor of 64
 cols = 64*floor(cols/64);
 
 output = zeros(rows,cols);
@@ -29,7 +29,7 @@ for(i=1:64:rows)
         
         meanDiff = abs(averages - blockMean);
         [val ind] = sort(meanDiff);
-        ind = ind(randi(5));
+        ind = ind(randi(1));
         
         output(i:i+63,j:j+63) = imread(fullfile(bg_dir,L(ind).name));
     end
