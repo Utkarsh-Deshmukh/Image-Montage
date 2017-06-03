@@ -8,12 +8,16 @@ coverImg = imresize(coverImg,5);
 L = dir(fullfile(bg_dir,'*.jpg'));
 [rows cols] = size(coverImg);
 
+
+%% This part is to create the averages matrix. If already created, comment this part and load the matrix
 % for(i=1:length(L))
 %     img = imread(fullfile(bg_dir,L(i).name));
 %     averages(i) = mean(img(:));
 % end
 
 load averages
+
+%%
 rows = 64*floor(rows/64);
 cols = 64*floor(cols/64);
 
